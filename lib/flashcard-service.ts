@@ -44,7 +44,7 @@ export class FlashcardService {
     return data
   }
 
-  async getFlashcardSets(): Promise<FlashcardSet[]> {
+  async getFlashcardSets(): Promise<(FlashcardSet & { flashcards?: { count: number }[] })[]> {
     const { data, error } = await this.supabase
       .from("flashcard_sets")
       .select(`
